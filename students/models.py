@@ -19,16 +19,18 @@ class SocialAccount(models.Model):
     def __str__(self):
         return self.username
 
-class Student:
+class Student(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    picture = models.ImageField(upload_to='static/students', blank=True, null=True)
+
     username = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
-    bio = models.TextField()
-    birthday = models.DateField()
-    email = models.EmailField()
-    phone = models.CharField(max_length=20)
+    bio = models.TextField(blank=True)
+    birthday = models.DateField(blank=True)
+    email = models.EmailField(blank=True)
+    phone = models.CharField(blank=True, max_length=20)
     
-    social_accounts = models.ManyToManyField(SocialAccount)
-    created_at = models.DateTimeField(auto_now_add=True)
+    social_accounts = models.ManyToManyField(SocialAccount, blank=True)
 
     def __str__(self):
         return self.name
