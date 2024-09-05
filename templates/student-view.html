@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body_attributes %}class='bg-[#ece3d4] md:py-4 md:pb-6'{% endblock %}
+{% block content %}
+<div class="w-full h-full max-w-3xl mx-auto border border-black">
+  <header class="bg-[#d5b990] text-[#291f0f] p-6 rounded-t-lg flex items-center gap-4">
+    <span class="relative flex shrink-0 overflow-hidden rounded-full w-12 h-12">
+      <img class="aspect-square h-full w-full" alt="Student Avatar" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541" />
+    </span>
+    <div class="grid gap-1">
+      <div class="text-lg font-semibold">{{ student.name|title }}</div>
+      <div class="text-sm text-[#5c4523]">@{{ student.username }}</div>
+    </div>
+  </header>
+  <div class="bg-[#ece3d4] p-6 rounded-b-lg grid gap-6">
+    <div class="grid gap-2">
+      <h3 class="text-lg font-semibold">Bio</h3>
+      <p class="text-[#5c4523]">
+        {{ student.bio }}
+      </p>
+    </div>
+    <div class="grid gap-2">
+      <h3 class="text-lg font-semibold">Details</h3>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="grid gap-1">
+          <div class="text-sm font-medium">🎂 Birthday</div>
+          <div class="text-[#5c4523]">{{ student.birthday }}</div>
+        </div>
+        <div class="grid gap-1">
+          <div class="text-sm font-medium">📨 Email</div>
+          <div class="text-[#5c4523]">{{ student.email }}</div>
+        </div>
+        <div class="grid gap-1">
+          <div class="text-sm font-medium">📞 Phone</div>
+          <div class="text-[#5c4523]">{{ student.phone }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid gap-2">
+      <h3 class="text-lg font-semibold">Interests</h3>
+      <div class="grid gap-2">
+        <div class="flex items-center gap-2 bg-[#d4c3aa] p-2 rounded-md">
+          <div class="bg-[#5c4523]/20 p-2 rounded-md">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 h-5"
+            >
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="font-medium">Rocket League</div>
+            <div class="text-xs text-[#5c4523]">Grand Champ since 2018</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 bg-[#d4c3aa] p-2 rounded-md">
+          <div class="bg-[#5c4523]/20 p-2 rounded-md">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 h-5"
+            >
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="font-medium">English Literature</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 bg-[#d4c3aa] p-2 rounded-md">
+          <div class="bg-[#5c4523]/20 p-2 rounded-md">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 h-5"
+            >
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="font-medium">Arts & Crafts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid gap-2">
+      <h3 class="text-lg font-semibold">Social</h3>
+      <div class="flex items-center gap-4">
+        {% for social in student.social %}
+        <a class="text-[#5c4523] hover:text[#d5b990]" href="{{ social.link }}" rel="ugc">
+          <img src="/static/social-icons/{{ social.name }}" alt="test" class="w-6 h-6">
+        </a>
+        {% endfor %}
+        {% if student.social|length == 0 %}
+        <p class="text-[#5c4523]">No social links available!</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
