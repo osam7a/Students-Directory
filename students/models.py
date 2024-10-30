@@ -8,12 +8,12 @@ SOCIAL_MEDIAS = (
     ('twitter', 'Twitter'),
     ('linkedin', 'LinkedIn'),
     ('pinterest', 'Pinterest'),
+    ('github', 'Github'),
 )
 
 # Create your models here.
 class SocialAccount(models.Model):
-    username = models.CharField(max_length=100)
-    social_media = models.CharField(max_length=100)
+    social_media = models.CharField(max_length=100, choices=SOCIAL_MEDIAS)
     url = models.URLField()
 
     def __str__(self):
