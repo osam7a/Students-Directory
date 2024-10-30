@@ -2,6 +2,7 @@
 
 {% load static %}
 
+{% block title %}{{ student.name|title }}{% endblock %}
 {% block body_attributes %}class='bg-[#ece3d4] md:py-4 md:pb-6'{% endblock %}
 {% block content %}
 <div class="w-full h-full max-w-3xl mx-auto border border-black">
