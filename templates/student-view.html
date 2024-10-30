@@ -114,12 +114,12 @@
     <div class="grid gap-2">
       <h3 class="text-lg font-semibold">Social</h3>
       <div class="flex items-center gap-4">
-        {% for social in student.social_accounts %}
-        <a class="text-[#5c4523] hover:text[#d5b990]" href="{{ social.url }}" rel="ugc">
-          <img src="/static/social-icons/{{ social.social_media }}" alt="Social Media Logo" class="w-6 h-6">
+        {% for social in student.social_accounts.all %}
+        <a target="_blank" href="{{ social.url }}" rel="ugc">
+          <img src="/static/social-icons/{{ social.social_media }}.svg" alt="Social Media Logo" class="w-10 h-10">
         </a>
         {% endfor %}
-        {% if student.social|length == 0 %}
+        {% if student.social_accounts.all|length == 0 %}
         <p class="text-[#5c4523]">No social links available!</p>
         {% endif %}
       </div>
